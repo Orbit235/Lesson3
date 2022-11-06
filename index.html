@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson3</title>
+</head>
+<body>
+    
+    <section class="user-interaction">
+        <div class="container">
+            <h1 class="section-header">
+                Обратная связь
+            </h1>
+            <div class="form-container">
+                <form id="form" method="get">
+                    <label>
+                        Login
+                        <input type="text" placeholder="Login" name="Login">
+                        <p class="result">
+
+                        </p>
+                        <div class="form-buttons d-flex">
+                            <button type="reset">Очистить</button>
+                            <button id="submit" type="submit" class="submit-btn">Отправить</button>
+                        </div>                     
+                    </label>
+                </form>
+            </div>
+        </div>
+    </section>
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js">
+    </script>
+    <script>
+          const re = new RegExp('[a-z]{3,5}')
+         function validateLogin (login) {
+            return re.test(login)
+        }
+        $('button.submit-btn').click ((e) => {
+            e.preventDefault() 
+            console.log ('Успех')
+            console.log ($('form#form').data)
+
+            const login=$('form#form').serializeArray () [0].value
+    if (validateLogin (login)) {
+        $(`p.result`).html ('Все хорошо')
+    }
+    
+            else 
+            {
+                $(`p.result`).html ('Неверный формат')
+            }
+        })
+
+      
+        
+        function validateLogin (login) {
+            return re.test(login)
+        }
+    </script>
+    <div>
+        <table id="table">
+            <tr>
+              <th>X</th>
+              <th>Результат</th>
+                          </tr>
+            <tr>
+              <td>Alfreds Futterkiste</td>
+              <td>Maria Anders</td>
+                          </tr>
+                     </table> 
+    </div>
+</body>
+</html>
